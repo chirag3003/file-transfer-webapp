@@ -1,0 +1,19 @@
+{
+    "name": "@file-transfer/backend",
+    "version": "1.0.0",
+    "main": "src",
+    "private": "true",
+    "scripts": {
+        "dev:backend": "yarn workspace @file-transfer/backend dev",
+        "dev:frontend": "yarn workspace @file-transfer/frontend  dev",
+        "dev": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\" ",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "chirag3003",
+    "workspaces": [
+        "src/*"
+    ],
+    "devDependencies": {
+        "concurrently": "^7.6.0"
+    }
+}
