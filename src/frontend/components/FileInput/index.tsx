@@ -1,21 +1,21 @@
-"use clien"
-
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { FilePlus, File as FileIcon, XCircle, Send } from "react-feather";
 import { filesize } from "filesize";
 
+
 function FileInput() {
     const [file, setFile] = useState<File | null>(null);
-
     const handleFileChange = (evt: ChangeEvent<HTMLInputElement>) => {
         if (evt.target.files) setFile(evt.target.files[0]);
     };
 
-    //remove the file if the user cancels the transfer
     const cancelTranfer = () => {
         setFile(null);
     };
 
+    useEffect(() => {
+        
+    }, []);
     return (
         <>
             {file ? (
@@ -46,9 +46,9 @@ function FileInput() {
                     className="h-full w-full p-2 text-blue-900  border-cyan-100 border-4 rounded-3xl border-dotted flex flex-col justify-center items-center"
                 >
                     <p className="text-xl ">Drag and drop your file to upload</p>
-                    <button className="outline-none border-2 border-cyan-100 p-2 rounded-lg my-2">
+                    <div className="outline-none border-2 border-cyan-100 p-2 rounded-lg my-2">
                         Browse Files
-                    </button>
+                    </div>
                     <FilePlus height={30} width={30} className={"mt-4"} />
                 </label>
             )}
