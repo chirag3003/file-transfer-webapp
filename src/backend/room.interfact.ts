@@ -1,6 +1,10 @@
 export default interface Room {
     roomId: string;
     connections: [RoomConnection];
+    offer?: any;
+    answer?: any;
+    offerCandidates: any[];
+    answerCandidates: any[];
 }
 
 export interface Rooms {

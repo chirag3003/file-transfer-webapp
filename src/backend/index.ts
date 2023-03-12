@@ -25,7 +25,6 @@ app.get("/", (req: Request, res: Response) => {
 io.on("connection", (socket) => {
     let roomId = socket.handshake.query.roomId as string;
     let room: Room;
-    console.log(roomId);
     if (roomId) {
         room = rooms[roomId];
         //checking if room exists or not
@@ -50,13 +49,15 @@ io.on("connection", (socket) => {
                     isSender: true,
                 },
             ],
+            offerCandidates: [],
+            answerCandidates: [],
         };
         socket.join(room.roomId);
         rooms[room.roomId] = room;
         //sending back the new room details
         socket.emit("room created", room.roomId);
     }
-    socketHandler(io, socket, room.roomId,rooms);
+    socketHandler(io, socket, room.roomId, room);
 });
 
 const port = process.env.PORT || 5000;
